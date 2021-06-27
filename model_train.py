@@ -4,7 +4,7 @@
 # @File : model_train.py
 # @Place : Yangpu, Shanghai
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 import json
 import codecs
@@ -20,7 +20,7 @@ from FGM import adversarial_training
 # 建议长度<=510
 # maxlen = 300
 # BATCH_SIZE = 8
-maxlen = 10
+maxlen = 300
 BATCH_SIZE = 8
 
 # config_path = './chinese_L-12_H-768_A-12/bert_config.json'

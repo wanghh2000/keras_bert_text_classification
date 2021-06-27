@@ -13,7 +13,8 @@ from model_train import token_dict, OurTokenizer
 from keras.models import load_model
 from keras_bert import get_custom_objects
 
-maxlen = 300
+# maxlen = 300
+maxlen = 10
 
 # 加载训练好的模型
 model = load_model("cls_cnews.h5", custom_objects=get_custom_objects())
