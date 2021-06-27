@@ -55,5 +55,5 @@ if __name__ == '__main__':
     set_session(sess)
     # 加载训练好的模型
     custom_objects = get_custom_objects()
-    model = load_model("cls_sougou.h5", custom_objects=get_custom_objects())
+    model = load_model("cls_cnews.h5", custom_objects=get_custom_objects())
     app.run(host="0.0.0.0", port=15000)

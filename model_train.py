@@ -3,6 +3,9 @@
 # @Author : Jclian91
 # @File : model_train.py
 # @Place : Yangpu, Shanghai
+import os
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 import json
 import codecs
 import pandas as pd
@@ -15,12 +18,18 @@ from keras.optimizers import Adam
 from FGM import adversarial_training
 
 # 建议长度<=510
-maxlen = 300
+# maxlen = 300
+# BATCH_SIZE = 8
+maxlen = 10
 BATCH_SIZE = 8
-config_path = './chinese_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = './chinese_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = './chinese_L-12_H-768_A-12/vocab.txt'
 
+# config_path = './chinese_L-12_H-768_A-12/bert_config.json'
+# checkpoint_path = './chinese_L-12_H-768_A-12/bert_model.ckpt'
+# dict_path = './chinese_L-12_H-768_A-12/vocab.txt'
+
+config_path =     'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_config.json'
+checkpoint_path = 'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_model.ckpt'
+dict_path =       'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/vocab.txt'
 
 token_dict = {}
 with codecs.open(dict_path, 'r', 'utf-8') as reader:
@@ -113,8 +122,8 @@ if __name__ == '__main__':
 
     # 数据处理, 读取训练集和测试集
     print("begin data processing...")
-    train_df = pd.read_csv("data/cnews/train.csv").fillna(value="")
-    test_df = pd.read_csv("data/cnews/test.csv").fillna(value="")
+    train_df = pd.read_csv("data/sougou_mini/train.csv").fillna(value="")
+    test_df = pd.read_csv("data/sougou_mini/test.csv").fillna(value="")
 
     labels = train_df["label"].unique()
     with open("label.json", "w", encoding="utf-8") as f:

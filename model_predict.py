@@ -16,7 +16,7 @@ from keras_bert import get_custom_objects
 maxlen = 300
 
 # 加载训练好的模型
-model = load_model("cls_sougou_mini.h5", custom_objects=get_custom_objects())
+model = load_model("cls_cnews.h5", custom_objects=get_custom_objects())
 tokenizer = OurTokenizer(token_dict)
 with open("label.json", "r", encoding="utf-8") as f:
     label_dict = json.loads(f.read())

@@ -13,7 +13,8 @@ from sklearn.metrics import classification_report
 
 from model_train import token_dict, OurTokenizer
 
-maxlen = 300
+# maxlen = 300
+maxlen = 10
 
 # 加载训练好的模型
 model = load_model("cls_cnews.h5", custom_objects=get_custom_objects())
@@ -36,7 +37,7 @@ def predict_single_text(text):
 
 # 模型评估
 def evaluate():
-    test_df = pd.read_csv("data/cnews/test.csv").fillna(value="")
+    test_df = pd.read_csv("data/sougou_mini/test.csv").fillna(value="")
     true_y_list, pred_y_list = [], []
     for i in range(test_df.shape[0]):
         print("predict %d samples" % (i+1))
