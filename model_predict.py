@@ -38,7 +38,6 @@ X1, X2 = tokenizer.encode(first=text, max_len=maxlen)
 predicted = model.predict([[X1], [X2]])
 y = np.argmax(predicted[0])
 
-
 print("原文: %s" % text)
 print("预测标签: %s" % label_dict[str(y)])
 e_time = time.time()
