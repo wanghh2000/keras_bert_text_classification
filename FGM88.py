@@ -6,7 +6,9 @@
 import keras
 import numpy as np
 import keras.backend as K
+import tensorflow as tf
 
+# tf.compat.v1.disable_eager_execution()
 
 def search_layer(inputs, name, exclude=None):
     """根据inputs和name来搜索层
@@ -58,8 +60,8 @@ def adversarial_training(model, embedding_name, epsilon=1):
 
     # 求Embedding梯度
     embeddings = embedding_layer.embeddings  # Embedding矩阵
-    # gradients = K.gradients(model.total_loss, [embeddings])  # Embedding梯度
-    gradients = K.gradients(model.compiled_loss, [embeddings])  # Embedding梯度
+    gradients = K.gradients(model.loss, [embeddings])  # Embedding梯度
+    # gradients = K.gradients(model.compiled_loss, [embeddings])  # Embedding梯度
     gradients = K.zeros_like(embeddings) + gradients[0]  # 转为dense tensor
 
     # 封装为函数

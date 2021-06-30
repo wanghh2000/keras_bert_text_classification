@@ -2,7 +2,7 @@
 # @Author : hhwang
 # @File : model_train_88.py
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import json
 import codecs
@@ -24,7 +24,7 @@ from FGM88 import adversarial_training
 # 建议长度<=510
 # maxlen = 300
 # BATCH_SIZE = 8
-maxlen = 50
+maxlen = 10
 BATCH_SIZE = 8
 
 config_path =     'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_config.json'
@@ -152,7 +152,7 @@ if __name__ == '__main__':
     # 模型训练
     model = create_cls_model(len(labels))
     # 启用对抗训练FGM
-    adversarial_training(model, 'Embedding-Token', 0.5)
+    # adversarial_training(model, 'Embedding-Token', 0.5)
     train_D = DataGenerator(train_data)
     test_D = DataGenerator(test_data)
 
