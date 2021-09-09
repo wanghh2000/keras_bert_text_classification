@@ -167,6 +167,7 @@ if __name__ == '__main__':
 
     # 模型保存
     # model.save('test.h5')
+    # model.save('cls_cnews.h5')
     # print("Model saved!")
 
     result = model.evaluate_generator(test_D.__iter__(), steps=len(test_D))
