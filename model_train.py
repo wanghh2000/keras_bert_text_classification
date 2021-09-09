@@ -17,6 +17,9 @@ from keras.optimizers import Adam
 
 from FGM import adversarial_training
 
+# Use 
+# keras-bert==0.83.0
+
 # 建议长度<=510
 # maxlen = 300
 # BATCH_SIZE = 8
@@ -119,16 +122,17 @@ def create_cls_model(num_labels):
 
 
 if __name__ == '__main__':
-
     # 数据处理, 读取训练集和测试集
     print("begin data processing...")
     train_df = pd.read_csv("data/test_mini/train.csv").fillna(value="")
     test_df = pd.read_csv("data/test_mini/test.csv").fillna(value="")
 
+    # Save labels to file label.json
     labels = train_df["label"].unique()
     with open("label.json", "w", encoding="utf-8") as f:
         f.write(json.dumps(dict(zip(range(len(labels)), labels)), ensure_ascii=False, indent=2))
 
+    
     train_data = []
     test_data = []
     for i in range(train_df.shape[0]):
@@ -157,20 +161,13 @@ if __name__ == '__main__':
     test_D = DataGenerator(test_data)
 
     print("begin model training...")
-    model.fit_generator(
-        train_D.__iter__(),
-        steps_per_epoch=len(train_D),
-        # epochs=3,
-        epochs=1,
-        validation_data=test_D.__iter__(),
-        validation_steps=len(test_D)
-    )
+    model.fit_generator(train_D.__iter__(), steps_per_epoch=len(train_D), epochs=3, validation_data=test_D.__iter__(), validation_steps=len(test_D))
 
     print("finish model training!")
 
     # 模型保存
-    model.save('test.h5')
-    print("Model saved!")
+    # model.save('test.h5')
+    # print("Model saved!")
 
     result = model.evaluate_generator(test_D.__iter__(), steps=len(test_D))
     print("模型评估结果:", result)
