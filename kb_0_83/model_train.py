@@ -124,8 +124,8 @@ def create_cls_model(num_labels):
 if __name__ == '__main__':
     # 数据处理, 读取训练集和测试集
     print("begin data processing...")
-    train_df = pd.read_csv("data/test_mini/train.csv").fillna(value="")
-    test_df = pd.read_csv("data/test_mini/test.csv").fillna(value="")
+    train_df = pd.read_csv("../data/test_mini/train.csv").fillna(value="")
+    test_df = pd.read_csv("../data/test_mini/test.csv").fillna(value="")
 
     # Save labels to file label.json
     labels = train_df["label"].unique()
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     test_D = DataGenerator(test_data)
 
     print("begin model training...")
-    model.fit_generator(train_D.__iter__(), steps_per_epoch=len(train_D), epochs=3, validation_data=test_D.__iter__(), validation_steps=len(test_D))
+    model.fit_generator(train_D.__iter__(), steps_per_epoch=len(train_D), epochs=2, validation_data=test_D.__iter__(), validation_steps=len(test_D))
 
     print("finish model training!")
 
