@@ -30,9 +30,17 @@ BATCH_SIZE = 8
 # checkpoint_path = './chinese_L-12_H-768_A-12/bert_model.ckpt'
 # dict_path = './chinese_L-12_H-768_A-12/vocab.txt'
 
-config_path =     'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = 'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_model.ckpt'
-dict_path =       'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/vocab.txt'
+# config_path =     'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_config.json'
+# checkpoint_path = 'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/bert_model.ckpt'
+# dict_path =       'C:/bd_ai/dli/models/bert/chinese_L-12_H-768_A-12/vocab.txt'
+
+# config_path =     'C:/bd_ai/dli/models/bert/chinese_wwm_L-12_H-768_A-12/bert_config.json'
+# checkpoint_path = 'C:/bd_ai/dli/models/bert/chinese_wwm_L-12_H-768_A-12/bert_model.ckpt'
+# dict_path =       'C:/bd_ai/dli/models/bert/chinese_wwm_L-12_H-768_A-12/vocab.txt'
+
+config_path =     'C:/bd_ai/dli/models/bert/chinese_wwm_ext_L-12_H-768_A-12/bert_config.json'
+checkpoint_path = 'C:/bd_ai/dli/models/bert/chinese_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
+dict_path =       'C:/bd_ai/dli/models/bert/chinese_wwm_ext_L-12_H-768_A-12/vocab.txt'
 
 token_dict = {}
 with codecs.open(dict_path, 'r', 'utf-8') as reader:
