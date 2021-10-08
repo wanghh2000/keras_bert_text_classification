@@ -109,6 +109,7 @@ def create_cls_model(num_labels):
     bert_model = load_trained_model_from_checkpoint(config_path, checkpoint_path, seq_len=None)
 
     for layer in bert_model.layers:
+        # whether to frozen layers
         layer.trainable = True
 
     # x1_in = Input(shape=(maxlen,))
